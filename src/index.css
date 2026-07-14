@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --brand: #9b51e0;
+    --brand-light: #b070f0;
+    --brand-dark: #7b3bcc;
+    
+    --surface-50: #f8fafc;
+    --surface-100: #f1f5f9;
+    --surface-900: #0a0a0a;
+    --surface-950: #050505;
+    
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8; /* slate-400 */
+    --text-muted: #cbd5e1; /* slate-300 */
+    
+    --border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .light {
+    --surface-900: #f1f5f9;
+    --surface-950: #ffffff;
+    
+    --text-primary: #0f172a; /* slate-900 */
+    --text-secondary: #475569; /* slate-600 */
+    --text-muted: #334155; /* slate-700 */
+    
+    --border-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-brand: var(--brand);
+  --color-brand-light: var(--brand-light);
+  --color-brand-dark: var(--brand-dark);
+  
+  --color-surface-50: var(--surface-50);
+  --color-surface-100: var(--surface-100);
+  --color-surface-900: var(--surface-900);
+  --color-surface-950: var(--surface-950);
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .glass {
+    @apply bg-surface-950/70 backdrop-blur-md border;
+    border-color: var(--border-color);
+  }
+}
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color: var(--text-primary);
+  }
+  
+  body {
+    @apply bg-surface-950 text-white transition-colors duration-300;
+  }
+
+  .light body {
+    color: var(--text-primary);
+  }
+  
+  .light .text-white {
+    color: var(--text-primary) !important;
+  }
+  
+  .light .text-slate-300 {
+    color: var(--text-muted) !important;
+  }
+
+  .light .text-slate-400 {
+    color: var(--text-secondary) !important;
+  }
+  
+  .light .border-white\/10 {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .light .border-white\/20 {
+    border-color: rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  .light .bg-white\/5 {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+  }
+  
+  .light .hover\:bg-white\/10:hover {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .light .invert-in-light {
+    filter: invert(1);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-950;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-brand/50 rounded-full hover:bg-brand transition-colors;
+  }
+
+  /* Ripple Animation */
+  @keyframes ripple {
+    0% {
+      width: 0;
+      height: 0;
+      opacity: 0.5;
+    }
+    100% {
+      width: 500px;
+      height: 500px;
+      opacity: 0;
+    }
+  }
+
+  .animate-ripple {
+    animation: ripple 0.6s linear;
+  }
+}
+
+
